@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shatha Alsulaimani — Data & BI Portfolio</title>
+<meta name="description" content="Shatha Alsulaimani, MIS student at the University of Tabuk. Data analysis, Power BI dashboards, Python and business analysis projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#0a0d12; --ink-2:#10151d; --ink-3:#171e29; --line:#243041;
+--paper:#ece6da; --muted:#9aa4b2; --dim:#5f6b7b;
+--sand:#e3b873; --teal:#4fb7a8; --rose:#d9826b;
+--serif:'Instrument Serif',Georgia,serif; --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+::selection{background:var(--sand);color:var(--ink)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(10,13,18,.82);backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.mark{font-family:var(--serif);font-size:26px;letter-spacing:.5px;text-decoration:none}
+.mark span{color:var(--sand)}
+nav ul{display:flex;gap:30px;list-style:none}
+nav ul a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .2s}
+nav ul a:hover{color:var(--paper)}
+@media(max-width:760px){nav ul{display:none}}
+/* hero */
+#hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;overflow:hidden}
+#scene{position:absolute;inset:0;z-index:0}
+#hero:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(10,13,18,.92) 0%,rgba(10,13,18,.55) 45%,rgba(10,13,18,0) 75%),linear-gradient(to top,var(--ink) 0%,transparent 30%);z-index:1;pointer-events:none}
+.hero-text{position:relative;z-index:2;max-width:620px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);display:flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--sand)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,8vw,104px);line-height:.95;margin:22px 0 26px;letter-spacing:-.01em}
+h1 em{color:var(--sand)}
+.lede{font-size:18px;color:#c8cdd4;max-width:520px}
+.cta{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:13px;letter-spacing:.06em;padding:14px 22px;border:1px solid var(--line);text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:10px;background:none;color:var(--paper);cursor:pointer}
+.btn.primary{background:var(--sand);color:var(--ink);border-color:var(--sand)}
+.btn:hover{transform:translateY(-2px);border-color:var(--sand)}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--dim)}
+.hero-meta{position:absolute;right:28px;bottom:34px;z-index:2;font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right;line-height:1.9}
+/* sections */
+section{padding:130px 0;position:relative}
+.sec-head{display:grid;grid-template-columns:200px 1fr;gap:40px;margin-bottom:64px;align-items:end}
+.sec-num{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.12em}
+.sec-num b{color:var(--sand);font-weight:500}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1}
+h2 em{color:var(--sand)}
+@media(max-width:760px){.sec-head{grid-template-columns:1fr;gap:12px}section{padding:90px 0}}
+/* about */
+.about{display:grid;grid-template-columns:200px 1fr 320px;gap:40px}
+.about p{font-size:19px;color:#cfd3d9;margin-bottom:20px;max-width:560px}
+.about p strong{color:var(--paper);font-weight:500}
+.facts{border-left:1px solid var(--line);padding-left:28px}
+.fact{padding:16px 0;border-bottom:1px solid var(--line)}
+.fact:last-child{border:0}
+.fact .k{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.fact .v{font-size:16px;margin-top:4px}
+.fact .v.big{font-family:var(--serif);font-size:38px;line-height:1.1;color:var(--sand)}
+@media(max-width:960px){.about{grid-template-columns:1fr}.about>div:first-child{display:none}.facts{border:0;padding:0}}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.skill-col{background:var(--ink);padding:30px 26px;transition:background .3s}
+.skill-col:hover{background:var(--ink-2)}
+.skill-col h3{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);margin-bottom:22px}
+.skill-col li{list-style:none;padding:9px 0;border-bottom:1px dashed #1f2834;font-size:15px;display:flex;justify-content:space-between;gap:10px}
+.skill-col li:last-child{border:0}
+.skill-col li small{font-family:var(--mono);font-size:11px;color:var(--dim);white-space:nowrap}
+@media(max-width:960px){.skills{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.skills{grid-template-columns:1fr}}
+/* projects */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+.chip{font-family:var(--mono);font-size:12px;padding:8px 14px;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;transition:all .2s}
+.chip.on,.chip:hover{border-color:var(--sand);color:var(--paper)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;perspective:1400px}
+.card{position:relative;background:linear-gradient(160deg,var(--ink-3),var(--ink-2));border:1px solid var(--line);padding:34px 32px 30px;cursor:pointer;transform-style:preserve-3d;transition:transform .15s ease-out,border-color .3s,opacity .3s;min-height:300px;display:flex;flex-direction:column}
+.card:hover{border-color:#3a4a60}
+.card.feature{grid-column:span 2;min-height:340px}
+.card .glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(227,184,115,.10),transparent 45%);opacity:0;transition:opacity .3s}
+.card:hover .glare{opacity:1}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;transform:translateZ(30px)}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.idx{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.card h3{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.1;margin:18px 0 14px;transform:translateZ(40px)}
+.card.feature h3{font-size:42px;max-width:720px}
+.card p{color:var(--muted);font-size:15px;transform:translateZ(20px);max-width:640px}
+.card .stats{display:flex;gap:34px;margin:24px 0 0;transform:translateZ(35px);flex-wrap:wrap}
+.card .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:34px;color:var(--sand);line-height:1}
+.card .stat span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.card .tools{margin-top:auto;padding-top:24px;display:flex;gap:6px;flex-wrap:wrap;transform:translateZ(25px)}
+.tool{font-family:var(--mono);font-size:11px;padding:4px 9px;background:rgba(255,255,255,.04);border:1px solid #222c3a;color:#b6bcc6}
+.card .more{position:absolute;right:28px;bottom:28px;font-family:var(--mono);font-size:12px;color:var(--sand);opacity:0;transition:opacity .3s,transform .3s;transform:translateX(-6px)}
+.card:hover .more{opacity:1;transform:translateX(0)}
+.card.hide{display:none}
+@media(max-width:860px){.projects{grid-template-columns:1fr}.card.feature{grid-column:auto}.card .more{opacity:1;position:static;margin-top:16px;transform:none}}
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:flex-start;justify-content:center;background:rgba(5,7,10,.78);backdrop-filter:blur(8px);overflow-y:auto;padding:60px 20px}
+.modal.open{display:flex}
+.sheet{background:var(--ink-2);border:1px solid var(--line);max-width:820px;width:100%;padding:48px;position:relative;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.sheet .x{position:absolute;top:18px;right:18px;background:none;border:1px solid var(--line);color:var(--paper);width:38px;height:38px;cursor:pointer;font-size:18px}
+.sheet h3{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1.05;margin:14px 0 8px}
+.sheet .meta{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:28px}
+.sheet h4{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.12em;color:var(--sand);text-transform:uppercase;margin:30px 0 12px}
+.sheet p,.sheet li{color:#c9ced5;font-size:16px}
+.sheet ul{padding-left:20px}
+.sheet li{margin-bottom:8px}
+.sheet li::marker{color:var(--sand)}
+@media(max-width:600px){.sheet{padding:34px 22px}.sheet h3{font-size:34px}}
+/* dashboard */
+#dashboard{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dash-intro{display:grid;grid-template-columns:200px 1fr;gap:40px;margin-bottom:40px}
+.dash-intro p{color:var(--muted);max-width:640px;font-size:16px}
+@media(max-width:760px){.dash-intro{grid-template-columns:1fr}}
+.pbi{background:#f3f2ef;color:#1d2226;border-radius:10px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px #2a3442;font-family:'Segoe UI',var(--sans);font-weight:400}
+.pbi-bar{background:#fff;border-bottom:1px solid #e0dfdc;display:flex;align-items:center;justify-content:space-between;padding:0 18px;height:52px;gap:14px}
+.pbi-brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.pbi-logo{width:26px;height:26px;border-radius:5px;background:#0a66c2;color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.pbi-tabs{display:flex;gap:2px;overflow-x:auto}
+.pbi-tabs button{border:0;background:none;padding:16px 14px;font:inherit;font-size:13px;color:#666;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.pbi-tabs button.on{color:#0a66c2;border-color:#0a66c2;font-weight:600}
+.pbi-body{padding:18px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+.kpi{background:#fff;border-radius:8px;padding:16px 18px;border:1px solid #e6e5e2}
+.kpi .l{font-size:12px;color:#666}
+.kpi .n{font-size:28px;font-weight:600;margin-top:4px;letter-spacing:-.01em}
+.kpi .s{font-size:11px;color:#057642;margin-top:2px}
+.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:12px}
+.grid2.even{grid-template-columns:1fr 1fr}
+.panel{background:#fff;border-radius:8px;border:1px solid #e6e5e2;padding:16px 18px;min-height:280px;display:flex;flex-direction:column}
+.panel h5{font-size:14px;font-weight:600;margin-bottom:2px}
+.panel .sub{font-size:12px;color:#777;margin-bottom:10px}
+.panel .cv{position:relative;flex:1;min-height:220px}
+.pbi-page{display:none}.pbi-page.on{display:block}
+.pbi-foot{font-size:11px;color:#888;padding:0 18px 14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.insight{background:#fff;border-left:3px solid #0a66c2;border-radius:6px;padding:12px 14px;font-size:13px;color:#333;margin-top:12px}
+@media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid2.even{grid-template-columns:1fr}}
+.dash-links{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+/* certs */
+.certs{border-top:1px solid var(--line)}
+.cert{display:grid;grid-template-columns:110px 1fr auto;gap:28px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline;transition:padding .25s}
+.cert:hover{padding-left:12px}
+.cert .d{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.cert .t{font-size:19px}
+.cert .o{font-size:14px;color:var(--muted);margin-top:2px}
+.cert .h{font-family:var(--mono);font-size:12px;color:var(--sand);white-space:nowrap}
+.cert .h a{color:var(--teal)}
+@media(max-width:640px){.cert{grid-template-columns:1fr;gap:4px}}
+/* contact */
+#contact{padding-bottom:80px}
+.contact-big{font-family:var(--serif);font-size:clamp(44px,7vw,92px);line-height:1;margin:10px 0 40px}
+.contact-big a{text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .3s,color .3s}
+.contact-big a:hover{color:var(--sand);border-color:var(--sand)}
+.contact-row{display:flex;gap:40px;flex-wrap:wrap;font-family:var(--mono);font-size:13px}
+.contact-row a{color:var(--muted);text-decoration:none}
+.contact-row a:hover{color:var(--sand)}
+footer{border-top:1px solid var(--line);padding:28px 0;font-family:var(--mono);font-size:11px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="wrap">
+<a class="mark" href="#hero">S<span>.</span>A</a>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#work">Projects</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#certs">Certificates</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div></nav>
+<header id="hero">
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="wrap">
+<div class="hero-text">
+<div class="eyebrow">MIS · Data &amp; Business Intelligence</div>
+<h1>Shatha<br><em>Alsulaimani</em></h1>
+<p class="lede">I turn messy business questions into clear numbers and dashboards that people can act on. Senior MIS student at the University of Tabuk, working with Power BI, Python and Excel.</p>
+<div class="cta">
+<a class="btn primary" href="#work">View projects →</a>
+<a class="btn" href="#dashboard">Live dashboard</a>
+</div>
+</div>
+</div>
+<div class="hero-meta">Jeddah · Saudi Arabia<br>Open to internships · 2027</div>
+<div class="scroll-hint">SCROLL</div>
+</header>
+<section id="about"><div class="wrap">
+<div class="about reveal">
+<div><div class="sec-num"><b>01</b> / About</div></div>
+<div>
+<p>I'm in my final year of <strong>Management Information Systems</strong>, and the part of the degree I keep coming back to is the moment a dataset starts answering a real question.</p>
+<p>For my graduation project, my team and I surveyed <strong>250 STC customers</strong> and interviewed five employees to find where complaint information gets lost between departments. My part was the methodology, the survey analysis and the KPI design, and we built three Power BI dashboards from the results.</p>
+<p>Outside that, I've modeled supply decisions with Excel Solver, mapped a restaurant's workflow onto Odoo ERP, and redesigned a retail network's security after the Target breach. I'm looking for an internship where I can do this work on real data.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">Degree</div><div class="v">B.Sc. Management Information Systems</div></div>
+<div class="fact"><div class="k">University</div><div class="v">University of Tabuk · College of Business Administration</div></div>
+<div class="fact"><div class="k">Graduation</div><div class="v big">2027</div></div>
+<div class="fact"><div class="k">Languages</div><div class="v">Arabic (native) · English</div></div>
+</div>
+</div>
+</div></section>
+<section id="skills"><div class="wrap">
+<div class="sec-head reveal"><div class="sec-num"><b>02</b> / Skills</div><h2>What I <em>work</em> with</h2></div>
+<div class="skills reveal">
+<div class="skill-col"><h3>Data &amp; BI</h3><ul>
+<li>Power BI <small>DAX · modeling</small></li><li>Excel <small>Solver · pivots</small></li><li>Google Looker Studio</li><li>KPI design</li><li>Dashboard development</li><li>AI-assisted analytics</li></ul></div>
+<div class="skill-col"><h3>Programming</h3><ul>
+<li>Python <small>Pandas · NumPy</small></li><li>OOP in Python</li><li>Tkinter GUIs</li><li>Java <small>fundamentals</small></li></ul></div>
+<div class="skill-col"><h3>Business Analysis</h3><ul>
+<li>Linear &amp; nonlinear programming</li><li>Decision analysis <small>EMV · EVPI</small></li><li>Aggregate planning</li><li>Cost &amp; break-even analysis</li><li>Survey &amp; mixed-methods research</li><li>PESTLE · strategic analysis</li></ul></div>
+<div class="skill-col"><h3>Systems</h3><ul>
+<li>ERP <small>Odoo 17</small></li><li>CRM workflows</li><li>ERD &amp; data flow diagrams</li><li>Security architecture</li><li>Teamwork &amp; presenting</li></ul></div>
+</div>
+</div></section>
+<section id="work"><div class="wrap">
+<div class="sec-head reveal"><div class="sec-num"><b>03</b> / Projects</div><h2>Selected <em>work</em></h2></div>
+<div class="filters reveal" id="filters">
+<button class="chip on" data-f="all">All</button>
+<button class="chip" data-f="bi">Data &amp; BI</button>
+<button class="chip" data-f="ops">Operations &amp; Decisions</button>
+<button class="chip" data-f="sys">Systems &amp; Security</button>
+<button class="chip" data-f="strat">Strategy</button>
+</div>
+<div class="projects" id="projects"></div>
+</div></section>
+<section id="dashboard"><div class="wrap">
+<div class="dash-intro reveal">
+<div class="sec-num"><b>04</b> / Dashboard</div>
+<div>
+<h2 style="margin-bottom:18px">Rabt <em>Network Analytics</em></h2>
+<p>A LinkedIn-style analytics report on a professional network dataset I generated: 6,000 members, 22,000 posts, 1,800 job postings and 17,000 applications in a star schema. The full report is built in Power BI. This is an interactive preview of the same numbers.</p>
+</div>
+</div>
+<div class="pbi reveal">
+<div class="pbi-bar">
+<div class="pbi-brand"><div class="pbi-logo">R</div>Rabt Analytics</div>
+<div class="pbi-tabs" id="tabs">
+<button class="on" data-p="ov">Overview</button>
+<button data-p="ct">Content</button>
+<button data-p="jb">Job Market</button>
+<button data-p="fn">Hiring Funnel</button>
+</div>
+</div>
+<div class="pbi-body">
+<div class="pbi-page on" id="p-ov">
+<div class="kpis" id="kpis"></div>
+<div class="grid2">
+<div class="panel"><h5>Impressions by month</h5><div class="sub">Jan 2025 – Oct 2026</div><div class="cv"><canvas id="c-monthly"></canvas></div></div>
+<div class="panel"><h5>Member growth</h5><div class="sub">Cumulative members</div><div class="cv"><canvas id="c-growth"></canvas></div></div>
+</div>
+</div>
+<div class="pbi-page" id="p-ct">
+<div class="grid2 even">
+<div class="panel"><h5>Average reach by post format</h5><div class="sub">Impressions per post</div><div class="cv"><canvas id="c-types"></canvas></div></div>
+<div class="panel"><h5>Best hour to post</h5><div class="sub">Average impressions by posting hour</div><div class="cv"><canvas id="c-hours"></canvas></div></div>
+</div>
+<div class="insight" id="ins-ct"></div>
+</div>
+<div class="pbi-page" id="p-jb">
+<div class="grid2 even">
+<div class="panel"><h5>Most requested skills</h5><div class="sub">Job postings requiring each skill</div><div class="cv"><canvas id="c-skills"></canvas></div></div>
+<div class="panel"><h5>Postings by city</h5><div class="sub">Top 8 cities</div><div class="cv"><canvas id="c-cities"></canvas></div></div>
+</div>
+<div class="grid2 even" style="margin-top:12px">
+<div class="panel" style="min-height:240px"><h5>Median monthly salary</h5><div class="sub">SAR, by experience level</div><div class="cv" style="min-height:180px"><canvas id="c-salary"></canvas></div></div>
+<div class="panel" style="min-height:240px;justify-content:center"><div class="insight" id="ins-jb" style="margin:0;border:0;padding:0"></div></div>
+</div>
+</div>
+<div class="pbi-page" id="p-fn">
+<div class="grid2">
+<div class="panel"><h5>Application funnel</h5><div class="sub">Applications reaching each stage</div><div class="cv"><canvas id="c-funnel"></canvas></div></div>
+<div class="panel" id="fn-side"></div>
+</div>
+</div>
+</div>
+<div class="pbi-foot"><span>Synthetic data · "Rabt" and all companies are fictional</span><span>Model: 4 dimensions · 3 facts · 1 bridge</span></div>
+</div>
+<div class="dash-links reveal">
+<a class="btn" id="gh-dash" href="#">Dataset, DAX &amp; .pbix on GitHub →</a>
+</div>
+</div></section>
+<section id="certs"><div class="wrap">
+<div class="sec-head reveal"><div class="sec-num"><b>05</b> / Certificates</div><h2>Training &amp; <em>certificates</em></h2></div>
+<div class="certs reveal" id="certlist"></div>
+</div></section>
+<section id="contact"><div class="wrap">
+<div class="sec-num reveal"><b>06</b> / Contact</div>
+<div class="contact-big reveal">Let's work on<br>your <a id="mail" href="#">data</a>.</div>
+<div class="contact-row reveal">
+<span id="mailtext"></span>
+<a id="li" href="#">LinkedIn ↗</a>
+<a id="gh" href="#">GitHub ↗</a>
+</div>
+</div></section>
+<footer><div class="wrap"><span>© 2026 Shatha Alsulaimani</span><span>Designed &amp; built by Shatha</span></div></footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="sheet" id="sheet"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+/* ================= EDIT YOUR LINKS HERE ================= */
+const CONFIG = {
+email:    "shatha-alsulimani@outlook.sa",
+linkedin: "https://www.linkedin.com/in/shatha-alsulaimani",
+github:   "https://github.com/shatha-alsulaimani",
+dashboardRepo: "https://github.com/shatha-alsulaimani/rabt-network-analytics"
+};
+/* ======================================================== */
+const DASH = {"kpi": {"members": 6000, "posts": 22000, "impressions": 23402454, "engRate": 4.24, "jobs": 1800, "apps": 17087, "hireRate": 6.36, "avgResp": 7.6}, "monthly": {"labels": ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"], "impressions": [715085, 741099, 701469, 776766, 894395, 899669, 873310, 981334, 1035164, 1001836, 1087519, 1160097, 1044889, 979400, 1166601, 1240703, 1218975, 1287180, 1336969, 1430780, 1408973, 1420241], "engRate": [3.7, 4.04, 4.33, 4.22, 4.26, 3.99, 4.09, 4.26, 4.37, 4.22, 4.31, 4.28, 4.33, 4.18, 4.51, 4.1, 4.42, 4.58, 4.48, 4.15, 4.19, 3.98]}, "types": {"labels": ["Document", "Poll", "Video", "Image", "Text", "Article"], "avgImp": [1582, 1256, 1231, 1089, 792, 645], "er": [4.2, 5.91, 4.02, 4.05, 3.99, 4.07]}, "funnel": {"labels": ["Applied", "Viewed", "Interview", "Offer", "Hired"], "values": [17087, 10762, 4127, 1379, 1086]}, "skills": {"labels": ["Python", "Power BI", "SQL", "Data Analysis", "Excel", "Generative AI", "Cloud (Azure/AWS)", "Machine Learning", "Java", "Tableau"], "values": [722, 554, 536, 456, 426, 365, 345, 328, 326, 230]}, "cities": {"labels": ["Riyadh", "Jeddah", "Dammam", "Khobar", "Makkah", "Tabuk", "Madinah", "Qassim"], "values": [632, 356, 156, 131, 118, 110, 107, 89]}, "hours": {"labels": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "values": [1113, 1017, 1342, 1157, 1309, 820, 1081, 1138, 1118, 1040, 1089, 1009, 1153, 1084, 1025, 1058, 1011, 1100, 1087, 1029, 1023, 1026, 1075, 1009]}, "growth": {"labels": ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09"], "values": [151, 305, 516, 743, 947, 1175, 1417, 1660, 1940, 2194, 2477, 2781, 3080, 3402, 3739, 4076, 4437, 4798, 5175, 5587, 6000]}, "salary": {"labels": ["Entry", "Associate", "Mid-Senior", "Manager"], "values": [9700, 14200, 21500, 32200]}};
+const PROJECTS = [
+{id:"stc",f:"bi",feature:true,tag:"Graduation project · Power BI",idx:"2026",
+title:"Customer context continuity in STC complaint handling",
+short:"Where does complaint information get lost as a case moves between employees, departments and channels? A mixed-methods study that ends in a BI decision-support model.",
+stats:[["250","survey responses"],["73.8%","faced a continuity break"],["6","KPIs designed"],["3","Power BI dashboards"]],
+tools:["Power BI","Survey analysis","KPI design","Interviews","AI decision support"],
+meta:"Team of 4 · Supervised by Dr. Asmaa Ahmed · University of Tabuk",
+body:`<h4>The problem</h4><p>When a complaint moves between employees, departments or channels, the customer often has to start over. We wanted to measure how often that happens and at which stage.</p>
+<h4>What I did</h4><ul><li>Owned the methodology section: mixed-methods design with a 250-person survey and five stakeholder interviews (engineer, customer service, complaints supervisor and more).</li><li>Analyzed the survey: 187 had filed a complaint, and 138 of them (73.8%) hit a continuity problem.</li><li>Built the six KPIs, such as information repetition rate (60.1% resubmitted information) and staff unawareness rate (47.8%).</li><li>Mapped the gap across the complaint journey. Referral and escalation was the worst stage, at 52.9%.</li></ul>
+<h4>Outcome</h4><p>Three Power BI dashboards, going from descriptive to predictive, and a recommended AI-powered employee dashboard with a 360° complaint view, an mystc customer tracker with SLA alerts, and a 17-week rollout plan.</p>`},
+{id:"astra",f:"ops",tag:"Excel Solver · Decision analysis",idx:"2026",
+title:"ASTRA Markets: optimizing AI-assisted replenishment",
+short:"Break-even, linear and nonlinear programming, sensitivity analysis and decision trees to decide whether a grocery chain should adopt AI replenishment.",
+stats:[["7,250","SAR/day optimal"],["21.6K","EVPI (SAR)"]],
+tools:["Excel Solver","Simplex LP","GRG Nonlinear","EMV / EVPI"],
+meta:"Quantitative methods · Academic project",
+body:`<h4>Questions answered</h4><ul><li><b>Break-even:</b> AI pays for itself after 12,000 of 45,000 yearly cases (26.7%), and earns SAR 180,000 a year at 60% adoption.</li><li><b>LP model:</b> 110 fresh and 26.67 packaged cases a day maximizes contribution at SAR 7,250. Labor time and fresh supply are the binding constraints.</li><li><b>Sensitivity:</b> labor's shadow price is SAR 3 per minute, so buying 120 extra minutes for SAR 200 nets +SAR 160 a day.</li><li><b>Nonlinear:</b> GRG profit maximum of SAR 690.6 a day, checked against whole-case plans.</li><li><b>Decision analysis:</b> full AI has the best EMV (58K), a pilot at two stores is the safest choice (maximin), and EVPI is 21.6K.</li></ul>`},
+{id:"target",f:"sys",tag:"Security · Architecture",idx:"2026",
+title:"Target 2013 breach: attack analysis and defense-in-depth redesign",
+short:"How one phished HVAC vendor led to 40M stolen cards, and a segmented, monitored network design that would have stopped it.",
+stats:[["40M","cards in the case"],["5","firewalls designed"]],
+tools:["Kill chain","Firewall rulebook","PostgreSQL","IDS/IPS","SIEM"],
+meta:"Team of 5 · Applied Security Project",
+body:`<h4>Analysis</h4><ul><li>Rebuilt the timeline from primary sources and mapped it to a seven-step kill chain.</li><li>Found the root causes: a standing vendor password, no MFA, a flat network, and alerts that nobody acted on.</li></ul>
+<h4>Redesign</h4><ul><li>Zoned architecture with five firewalls, a default-deny cardholder data environment and a ZTNA vendor gateway.</li><li>Least-privilege SQL roles and views, tested on PostgreSQL 16, plus P2PE and tokenization.</li><li>A SIEM and SOAR setup with a single alert queue, a honeypot and a honeytoken account.</li><li>A DDoS runbook for peak season.</li></ul>`},
+{id:"erp",f:"sys",tag:"ERP · Odoo 17",idx:"2026",
+title:"Implementing Odoo ERP for a restaurant",
+short:"Moving a 25-staff restaurant from paper slips and manual stock counts to an integrated POS → inventory → accounting flow.",
+stats:[["5","Odoo modules"],["150+","customers/day"]],
+tools:["Odoo","POS","Inventory","Accounting","HR"],
+meta:"Team of 6 · ERP Systems",
+body:`<h4>Scope</h4><p>"Al Deera" (a scenario restaurant) took orders on paper, counted stock by hand every week and kept its books in Excel.</p>
+<h4>What we built</h4><ul><li>Configured POS with a floor plan, plus Inventory with low-stock alerts, Purchase reorder rules, Accounting and HR in Odoo.</li><li>Demonstrated the full workflow: order → stock deduction → invoice → payment → journal entry.</li><li>Evaluated benefits against challenges such as resistance to change, training, cost and data migration.</li><li>Also produced an Odoo walkthrough covering CRM pipeline to invoice to reporting.</li></ul>`},
+{id:"boeing",f:"strat",tag:"Strategic analysis",idx:"2026",
+title:"Boeing and the 737 MAX: crisis and recovery",
+short:"How the 1997 merger moved Boeing from an engineering-first company to a finance-first one, and a five-year roadmap to rebuild trust.",
+stats:[["5-yr","recovery roadmap"]],
+tools:["PESTLE","Competitive analysis","Strategy"],
+meta:"Team of 7 · Strategic Management",
+body:`<ul><li>Traced the cultural change after the McDonnell Douglas merger: HQ moved away from engineering, and buybacks were favored over clean-sheet design.</li><li>Ran a PESTLE analysis and looked at the Boeing–Airbus duopoly in 2024 and 2025.</li><li>Proposed a roadmap built on engineering proximity, governance signals and new-aircraft innovation.</li></ul>`},
+{id:"agg",f:"ops",tag:"Operations · Cost analysis",idx:"MIS",
+title:"Aggregate planning for a furniture company",
+short:"Three production strategies compared over a six-month forecast of 6,900 units.",
+stats:[["$7.6K","saved vs. constant workforce"]],
+tools:["Excel","Aggregate planning","Cost analysis"],
+meta:"Group project",
+body:`<ul><li>Constant workforce: $143,232</li><li>Subcontracting: $135,622 (lowest)</li><li>Hiring and layoffs: $144,450</li></ul><p>We recommended subcontracting. It saves about $7,600 compared with keeping a constant workforce.</p>`},
+{id:"py",f:"bi",tag:"Python",idx:"MIS",
+title:"Python labs: analysis, OOP and a GUI",
+short:"A sales analysis report, an inventory system with alerts, and a pricing calculator app.",
+stats:[["3","mini-projects"]],
+tools:["Pandas","NumPy","OOP","Tkinter"],
+meta:"Academic labs",
+body:`<ul><li><b>Sales analysis:</b> totals, averages, profit margin, regional breakdown and best and worst months, exported as a summary report.</li><li><b>Inventory system:</b> encapsulation, inheritance and composition, with low-stock and expiry alerts.</li><li><b>Pricing calculator:</b> a Tkinter GUI for discount, tax and final price, with input validation.</li></ul>`},
+{id:"research",f:"strat",tag:"Research · Databases",idx:"MIS",
+title:"Digital marketing research and a career-site ERD",
+short:"Two co-authored papers on digital marketing, and the database design for a career advising website.",
+stats:[["2","research papers"]],
+tools:["Research","ERD","Data modeling"],
+meta:"Group research",
+body:`<ul><li>Paper 1: the impact of digital marketing on consumer behavior.</li><li>Paper 2: the role of modern technologies in companies' digital marketing strategies.</li><li>Designed the entity relationship diagram for a career advising website.</li></ul>`}
+];
+const CERTS = [
+["Sep 2026","Data Literacy","IBM SkillsBuild",'<a href="https://www.credly.com/go/uuLhVWoa">Verify ↗</a>'],
+["Sep 2026","Artificial Intelligence in Business","Saudi Authority of Internal Auditors","9 h"],
+["Sep 2026","Social Entrepreneurship Projects","Monsha'at Academy",""],
+["Sep 2026","AI Data Analytics Skills","Intishar Al-Ilm Training Institute · TVTC accredited","28 h"],
+["Sep 2026","Data Analysis Using Power BI","Intishar Al-Ilm Training Institute","25 h"],
+["Sep 2026","Excel Skills and Data Processing","Intishar Al-Ilm Training Institute","20 h"],
+["Aug 2026","AI and Data Analysis in the Future Labor Market","Doroob · HRDF","2 h"],
+["Nov 2025","Volunteer: Advanced Concepts of Programming with Python · Synergy & Innovation in IT Project Teams","National Center for Non-Profit Sector Development · University of Tabuk","2 h each"],
+["Apr 2025","Introduction to E-Commerce","Monsha'at Academy",""],
+["Apr 2025","Low-Cost E-Marketing","Monsha'at Academy",""],
+["Feb 2024","Customer Relationship Management (CRM)","Monsha'at Academy",""],
+["Feb 2024","Digital Transformation Strategies","Monsha'at Academy",""]
+];
+/* ---------- links ---------- */
+document.getElementById('mail').href="mailto:"+CONFIG.email;
+document.getElementById('mailtext').textContent=CONFIG.email;
+document.getElementById('li').href=CONFIG.linkedin;
+document.getElementById('gh').href=CONFIG.github;
+document.getElementById('gh-dash').href=CONFIG.dashboardRepo;
+/* ---------- nav ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
+/* ---------- projects ---------- */
+const pc=document.getElementById('projects');
+PROJECTS.forEach((p,i)=>{
+const el=document.createElement('article');
+el.className='card reveal'+(p.feature?' feature':''); el.dataset.f=p.f; el.tabIndex=0;
+el.innerHTML=`<div class="glare"></div><div class="top"><span class="tag">${p.tag}</span><span class="idx">${String(i+1).padStart(2,'0')} · ${p.idx}</span></div>
+<h3>${p.title}</h3><p>${p.short}</p>
+<div class="stats">${p.stats.map(s=>`<div class="stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
+<div class="tools">${p.tools.map(t=>`<span class="tool">${t}</span>`).join('')}</div><span class="more">Read case →</span>`;
+el.addEventListener('click',()=>openP(p));
+el.addEventListener('keydown',e=>{if(e.key==='Enter')openP(p)});
+if(matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+el.style.transform=`rotateY(${(x-.5)*8}deg) rotateX(${(.5-y)*8}deg)`;el.style.setProperty('--gx',x*100+'%');el.style.setProperty('--gy',y*100+'%')});
+el.addEventListener('mouseleave',()=>el.style.transform='');
+}
+pc.appendChild(el);
+});
+document.getElementById('filters').addEventListener('click',e=>{
+const b=e.target.closest('.chip'); if(!b)return;
+document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b));
+document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.f!==b.dataset.f));
+});
+const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');
+function openP(p){
+sheet.innerHTML=`<button class="x" aria-label="Close">×</button><span class="tag">${p.tag}</span><h3>${p.title}</h3><div class="meta">${p.meta}</div>${p.body}
+<div class="tools" style="margin-top:30px;display:flex;gap:6px;flex-wrap:wrap">${p.tools.map(t=>`<span class="tool">${t}</span>`).join('')}</div>`;
+modal.classList.add('open');document.body.style.overflow='hidden';sheet.querySelector('.x').focus();
+}
+function closeM(){modal.classList.remove('open');document.body.style.overflow=''}
+modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('.x'))closeM()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+/* ---------- certs ---------- */
+document.getElementById('certlist').innerHTML=CERTS.map(c=>`<div class="cert"><div class="d">${c[0]}</div><div><div class="t">${c[1]}</div><div class="o">${c[2]}</div></div><div class="h">${c[3]}</div></div>`).join('');
+/* ---------- reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ---------- dashboard ---------- */
+const fmt=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':String(n);
+const K=DASH.kpi;
+document.getElementById('kpis').innerHTML=[
+["Total impressions",fmt(K.impressions),fmt(K.posts)+" posts"],
+["Engagement rate",K.engRate+"%","reactions + comments + reposts"],
+["Job postings",fmt(K.jobs),fmt(K.apps)+" applications"],
+["Hire rate",K.hireRate+"%","avg. "+K.avgResp+" days to first response"]
+].map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="n">${k[1]}</div><div class="s">${k[2]}</div></div>`).join('');
+const t=DASH.types, best=t.labels[0], txt=t.avgImp[t.labels.indexOf('Text')];
+const hrs=DASH.hours.values, bh=hrs.indexOf(Math.max(...hrs));
+document.getElementById('ins-ct').innerHTML=`<b>Insight:</b> ${best} posts reach about ${(t.avgImp[0]/txt).toFixed(1)}× more people than plain text. Polls have the highest engagement rate (${t.er[t.labels.indexOf('Poll')]}%). Posts published around ${bh}:00 get the most impressions on average.`;
+const sk=DASH.skills, sal=DASH.salary;
+document.getElementById('ins-jb').innerHTML=`<div style="font-size:12px;color:#777;margin-bottom:6px">KEY INSIGHT</div><div style="font-size:15px;line-height:1.55"><b>${sk.labels[0]}</b>, <b>${sk.labels[1]}</b> and <b>${sk.labels[2]}</b> are the three most requested skills. The median salary rises from ${sal.values[0].toLocaleString()} SAR at entry level to ${sal.values[3].toLocaleString()} SAR at manager level, about ${(sal.values[3]/sal.values[0]).toFixed(1)}×.</div>`;
+const fv=DASH.funnel.values;
+document.getElementById('fn-side').innerHTML=`<h5>Stage conversion</h5><div class="sub">Share of applications moving to the next stage</div>`+
+DASH.funnel.labels.slice(1).map((l,i)=>{const r=fv[i+1]/fv[i]*100;return `<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span>${DASH.funnel.labels[i]} → ${l}</span><b>${r.toFixed(1)}%</b></div><div style="height:6px;background:#eef3f8;border-radius:3px;margin-top:5px"><div style="height:100%;width:${r}%;background:#0a66c2;border-radius:3px"></div></div></div>`}).join('')+
+`<div class="insight" style="margin-top:auto">Biggest drop: <b>Viewed → Interview</b>. Only ${(fv[2]/fv[1]*100).toFixed(0)}% of viewed applications get an interview, so that is where a better CV and portfolio make the most difference.</div>`;
+const charts={};
+function mk(id,cfg){if(!window.Chart||charts[id])return;charts[id]=new Chart(document.getElementById(id),cfg)}
+const B='#0a66c2',B2='#70b5f9',G='#e8e7e4';
+function baseOpts(extra){return Object.assign({responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1d2226',padding:10,cornerRadius:6}},
+scales:{x:{grid:{display:false},ticks:{color:'#666',font:{size:11}}},y:{grid:{color:G},border:{display:false},ticks:{color:'#666',font:{size:11},callback:v=>fmt(v)}}}},extra||{})}
+function draw(p){
+if(!window.Chart)return;
+Chart.defaults.font.family="'Segoe UI',system-ui,sans-serif";
+if(p==='ov'){
+mk('c-monthly',{type:'line',data:{labels:DASH.monthly.labels.map(l=>{const[y,m]=l.split('-');return new Date(y,m-1).toLocaleString('en',{month:'short'})+" '"+y.slice(2)}),datasets:[{data:DASH.monthly.impressions,borderColor:B,backgroundColor:'rgba(10,102,194,.10)',fill:true,tension:.35,pointRadius:0,pointHoverRadius:5,borderWidth:2}]},options:baseOpts()});
+mk('c-growth',{type:'line',data:{labels:DASH.growth.labels,datasets:[{data:DASH.growth.values,borderColor:'#057642',backgroundColor:'rgba(5,118,66,.08)',fill:true,tension:.3,pointRadius:0,borderWidth:2}]},options:baseOpts({scales:{x:{display:false},y:{grid:{color:G},border:{display:false},ticks:{color:'#666',font:{size:11},callback:v=>fmt(v)}}}})});
+}
+if(p==='ct'){
+mk('c-types',{type:'bar',data:{labels:t.labels,datasets:[{data:t.avgImp,backgroundColor:t.labels.map((l,i)=>i===0?B:B2),borderRadius:4}]},options:baseOpts({indexAxis:'y',scales:{x:{grid:{color:G},border:{display:false},ticks:{color:'#666'}},y:{grid:{display:false},ticks:{color:'#333'}}}})});
+mk('c-hours',{type:'bar',data:{labels:DASH.hours.labels.map(h=>h+':00'),datasets:[{data:hrs,backgroundColor:hrs.map((v,i)=>i===bh?B:'#c9dff3'),borderRadius:3}]},options:baseOpts()});
+}
+if(p==='jb'){
+mk('c-skills',{type:'bar',data:{labels:sk.labels,datasets:[{data:sk.values,backgroundColor:sk.labels.map(l=>['Power BI','Excel','Python','Data Analysis','SQL'].includes(l)?B:B2),borderRadius:4}]},options:baseOpts({indexAxis:'y',scales:{x:{grid:{color:G},border:{display:false},ticks:{color:'#666'}},y:{grid:{display:false},ticks:{color:'#333',font:{size:11}}}}})});
+mk('c-cities',{type:'doughnut',data:{labels:DASH.cities.labels,datasets:[{data:DASH.cities.values,backgroundColor:['#0a66c2','#378fe9','#70b5f9','#a8d4ff','#057642','#5f9b41','#e7a33e','#b24020'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'right',labels:{boxWidth:10,font:{size:11},color:'#333'}}}}});
+mk('c-salary',{type:'bar',data:{labels:sal.labels,datasets:[{data:sal.values,backgroundColor:B,borderRadius:4}]},options:baseOpts()});
+}
+if(p==='fn'){
+mk('c-funnel',{type:'bar',data:{labels:DASH.funnel.labels,datasets:[{data:fv,backgroundColor:['#0a66c2','#2a7fd4','#4a96e0','#70b5f9','#057642'],borderRadius:4}]},options:baseOpts({indexAxis:'y',scales:{x:{grid:{color:G},border:{display:false},ticks:{color:'#666',callback:v=>fmt(v)}},y:{grid:{display:false},ticks:{color:'#333'}}}})});
+}
+}
+document.getElementById('tabs').addEventListener('click',e=>{
+const b=e.target.closest('button');if(!b)return;
+document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
+document.querySelectorAll('.pbi-page').forEach(x=>x.classList.toggle('on',x.id==='p-'+b.dataset.p));
+draw(b.dataset.p);
+});
+const dio=new IntersectionObserver(es=>{if(es[0].isIntersecting){draw('ov');dio.disconnect()}},{threshold:.1});
+dio.observe(document.querySelector('.pbi'));
+/* ---------- 3D hero: a field of data bars ---------- */
+(function(){
+if(!window.THREE)return;
+const canvas=document.getElementById('scene');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const mobile=innerWidth<760;
+const renderer=new THREE.WebGLRenderer({canvas,antialias:!mobile,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,mobile?1.5:2));
+const scene=new THREE.Scene(); scene.fog=new THREE.Fog(0x0a0d12,18,46);
+const cam=new THREE.PerspectiveCamera(42,1,.1,100);
+scene.add(new THREE.AmbientLight(0x6a7590,.55));
+const key=new THREE.DirectionalLight(0xffe3b0,1.1); key.position.set(-6,14,8); scene.add(key);
+const rim=new THREE.PointLight(0x4fb7a8,1.4,40); rim.position.set(10,4,-6); scene.add(rim);
+const N=mobile?16:26, S=.62, gap=.16, half=(N*(S+gap))/2;
+const geo=new THREE.BoxGeometry(S,1,S); geo.translate(0,.5,0);
+const mat=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.55,metalness:.15});
+const bars=new THREE.InstancedMesh(geo,mat,N*N);
+const dummy=new THREE.Object3D(), col=new THREE.Color();
+const cLow=new THREE.Color(0x1a2433), cMid=new THREE.Color(0x4fb7a8), cHi=new THREE.Color(0xe3b873);
+const cells=[];
+for(let i=0;i<N;i++)for(let j=0;j<N;j++){
+const x=i*(S+gap)-half, z=j*(S+gap)-half;
+cells.push({x,z,seed:Math.random()*6.28,d:Math.hypot(x,z)});
+}
+scene.add(bars);
+// grid floor lines
+const grid=new THREE.GridHelper(N*(S+gap)*1.6,N*1.6|0,0x243041,0x161d28); grid.position.y=-.01; scene.add(grid);
+// floating nodes
+const pc=mobile?60:140, pg=new THREE.BufferGeometry(), pos=new Float32Array(pc*3);
+for(let i=0;i<pc;i++){pos[i*3]=(Math.random()-.5)*30;pos[i*3+1]=2+Math.random()*9;pos[i*3+2]=(Math.random()-.5)*30}
+pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xe3b873,size:.07,transparent:true,opacity:.8}));
+scene.add(pts);
+// a trend line floating above the bars
+const lp=[];for(let k=0;k<=60;k++){const x=-half+k*(2*half/60);lp.push(new THREE.Vector3(x,0,0))}
+const lineGeo=new THREE.BufferGeometry().setFromPoints(lp);
+const line=new THREE.Line(lineGeo,new THREE.LineBasicMaterial({color:0xe3b873,transparent:true,opacity:.9}));
+line.position.z=-2; scene.add(line);
+let mx=0,my=0,tx=0,ty=0,sy=0;
+addEventListener('pointermove',e=>{tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5},{passive:true});
+addEventListener('scroll',()=>{sy=scrollY},{passive:true});
+function size(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+addEventListener('resize',size); size();
+let visible=true; new IntersectionObserver(e=>visible=e[0].isIntersecting).observe(canvas);
+const clock=new THREE.Clock();
+function frame(){
+requestAnimationFrame(frame);
+if(!visible)return;
+const t=reduce?2:clock.getElapsedTime();
+mx+=(tx-mx)*.04; my+=(ty-my)*.04;
+const sp=Math.min(sy/innerHeight,1);
+cells.forEach((c,k)=>{
+const wave=Math.sin(c.x*.45+t*.9)*Math.cos(c.z*.38+t*.6)+Math.sin(c.d*.5-t*1.2)*.6;
+let h=Math.max(.08,1.6+wave*1.25+Math.sin(c.seed+t*.5)*.35);
+// mouse lift
+const mxw=mx*half*1.6, mzw=my*half*1.6, dm=Math.hypot(c.x-mxw,c.z-mzw);
+h+=Math.max(0,2.4-dm*.55)*1.2;
+h*=(1-sp*.6);
+dummy.position.set(c.x,0,c.z); dummy.scale.set(1,h,1); dummy.updateMatrix();
+bars.setMatrixAt(k,dummy.matrix);
+const n=Math.min(h/5,1); n<.5?col.copy(cLow).lerp(cMid,n*2):col.copy(cMid).lerp(cHi,(n-.5)*2);
+bars.setColorAt(k,col);
+});
+bars.instanceMatrix.needsUpdate=true; bars.instanceColor.needsUpdate=true;
+const a=lineGeo.attributes.position;
+for(let k=0;k<a.count;k++){const x=a.getX(k);a.setY(k,5.2+Math.sin(x*.35+t*.8)*.6+x*.06)}
+a.needsUpdate=true;
+pts.rotation.y=t*.02;
+const r=21-sp*4, ang=.75+mx*.35+t*.03;
+cam.position.set(Math.sin(ang)*r,10+my*-3+sp*6,Math.cos(ang)*r);
+cam.lookAt(2.5,1.5-sp*2,0);
+renderer.render(scene,cam);
+}
+frame();
+})();
+</script>
+</body>
+</html>
